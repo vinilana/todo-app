@@ -1,16 +1,20 @@
 import React from "react";
 import { useDrop } from "react-dnd";
+import { useBoardStore } from "../store/board.store";
 import { Task } from "../types";
 import Card from "./Card";
 
 interface Props {
   title: string;
-  tasks: Task[];
   status: Task["status"];
   onStatusChange: (taskId: Task["id"], status: Task["status"]) => void;
 }
 
-const Column: React.FC<Props> = ({ status, tasks, title, onStatusChange }) => {
+const Column: React.FC<Props> = ({ status, title, onStatusChange }) => {
+  const tasks = useBoardStore((state) => state.tasks).filter(
+    (task) => task.status === status
+  );
+
   const [, ref] = useDrop({
     accept: "CARD",
     drop: (item: { id: Task["id"] }) => {
