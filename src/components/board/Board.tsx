@@ -2,6 +2,7 @@ import React from "react";
 import { useBoardStore } from "../../store/board.store";
 import Column from "./column/Column";
 import TaskForm from "./task-form/TaskForm";
+import { Board as StyledBoard } from "./Board.styles";
 
 const Board: React.FC = () => {
   const updateTaskStatus = useBoardStore((state) => state.updateTaskStatus);
@@ -9,12 +10,7 @@ const Board: React.FC = () => {
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
+      <StyledBoard>
         <Column title="To do" status="todo" onStatusChange={updateTaskStatus} />
         <Column
           title="In progress"
@@ -22,7 +18,7 @@ const Board: React.FC = () => {
           onStatusChange={updateTaskStatus}
         />
         <Column title="Done" status="done" onStatusChange={updateTaskStatus} />
-      </div>
+      </StyledBoard>
       <TaskForm onSubmit={addTask} />
     </>
   );
