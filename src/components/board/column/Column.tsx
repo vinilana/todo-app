@@ -19,7 +19,6 @@ const Column: React.FC<Props> = ({ status, title, onStatusChange }) => {
   const [, ref] = useDrop({
     accept: "CARD",
     drop: (item: { id: Task["id"] }) => {
-      console.log(item);
       onStatusChange(item.id, status);
     },
   });
