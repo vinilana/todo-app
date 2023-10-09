@@ -39,7 +39,7 @@ npm start
 
 4. **Open http://localhost:3000 to view it in the browser.**
 
-5 **Build**
+5. **Build**
 To build the application, run the following command:
 
 ```sh
