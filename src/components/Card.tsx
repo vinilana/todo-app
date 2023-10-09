@@ -1,25 +1,22 @@
 import React from "react";
+import { useDrag } from "react-dnd";
 import { Task } from "../types";
 
 interface Props {
   task: Task;
-  onStatusChange: (taskId: Task["id"], status: Task["status"]) => void;
 }
 
-const Card: React.FC<Props> = ({ task, onStatusChange }) => (
-  <div>
-    <h4>{task.title}</h4>
-    <select
-      value={task.status}
-      onChange={(e) =>
-        onStatusChange(task.id, e.target.value as Task["status"])
-      }
-    >
-      <option value="todo">To Do</option>
-      <option value="in-progress">In Progress</option>
-      <option value="done">Done</option>
-    </select>
-  </div>
-);
+const Card: React.FC<Props> = ({ task }) => {
+  const [, ref] = useDrag({
+    type: "CARD",
+    item: { id: task.id, status: task.status },
+  });
+
+  return (
+    <div ref={ref}>
+      <h4>{task.title}</h4>
+    </div>
+  );
+};
 
 export default Card;

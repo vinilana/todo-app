@@ -12,19 +12,27 @@ const Board: React.FC = () => {
   const doneTasks = tasks.filter((task) => task.status === "done");
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+      }}
+    >
       <Column
-        title="todo"
+        title="To do"
+        status="todo"
         tasks={todoTasks}
         onStatusChange={updateTaskStatus}
       />
       <Column
-        title="in-progress"
+        title="In progress"
+        status="in-progress"
         tasks={inProgressTasks}
         onStatusChange={updateTaskStatus}
       />
       <Column
-        title="done"
+        title="Done"
+        status="done"
         tasks={doneTasks}
         onStatusChange={updateTaskStatus}
       />
