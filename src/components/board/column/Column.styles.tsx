@@ -6,6 +6,6 @@ export const StyledColumn = styled.div`
   padding: 1em;
   margin: 1em;
   background-color: #fff;
-  min-width: 200px;
+  min-width: 300px;
   min-height: 200px;
 `;
