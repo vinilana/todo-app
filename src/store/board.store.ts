@@ -8,23 +8,7 @@ interface Store {
 }
 
 export const useBoardStore = create<Store>((set, get) => ({
-  tasks: [
-    {
-      id: "1",
-      title: "Task 1",
-      status: "todo",
-    },
-    {
-      id: "2",
-      title: "Task 2",
-      status: "in-progress",
-    },
-    {
-      id: "3",
-      title: "Task 3",
-      status: "done",
-    },
-  ],
+  tasks: [],
   addTask: (task) =>
     set({
       tasks: [...get().tasks, task],
