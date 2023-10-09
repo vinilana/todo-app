@@ -1,8 +1,9 @@
 import React from "react";
 import { useDrop } from "react-dnd";
-import { useBoardStore } from "../store/board.store";
-import { Task } from "../types";
-import Card from "./Card";
+import { useBoardStore } from "../../../store/board.store";
+import { Task } from "../../../types";
+import Card from "../card/Card";
+import { StyledColumn } from "./Column.styles";
 
 interface Props {
   title: string;
@@ -24,18 +25,12 @@ const Column: React.FC<Props> = ({ status, title, onStatusChange }) => {
   });
 
   return (
-    <div
-      style={{
-        width: "300px",
-        minHeight: "200px",
-      }}
-      ref={ref}
-    >
+    <StyledColumn ref={ref}>
       <h2>{title}</h2>
       {tasks.map((task) => (
         <Card key={task.id} task={task} />
       ))}
-    </div>
+    </StyledColumn>
   );
 };
 

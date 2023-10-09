@@ -2,13 +2,15 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { nanoid } from "nanoid";
-import { Task } from "../types";
+import { Task } from "../../../types";
+import Button from "../../buttons";
+import { Form, Input } from "./TaskForm.styles";
 
-interface Props {
+interface TaskFormProps {
   onSubmit: (task: Task) => void;
 }
 
-const TaskForm: React.FC<Props> = ({ onSubmit }) => {
+const TaskForm: React.FC<TaskFormProps> = ({ onSubmit }) => {
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -29,13 +31,13 @@ const TaskForm: React.FC<Props> = ({ onSubmit }) => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={formik.handleSubmit}>
       <div>
-        <label htmlFor="title">Task</label>
-        <input
+        <Input
           id="title"
           name="title"
           type="text"
+          placeholder="Add Task"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.title}
@@ -45,8 +47,8 @@ const TaskForm: React.FC<Props> = ({ onSubmit }) => {
         ) : null}
       </div>
 
-      <button type="submit">Add Task</button>
-    </form>
+      <Button type="submit">+</Button>
+    </Form>
   );
 };
 

@@ -1,7 +1,9 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-import { useBoardStore } from "../store/board.store";
-import { Task } from "../types";
+import { useBoardStore } from "../../../store/board.store";
+import { Task } from "../../../types";
+import { MoveBackButton, MoveForwardButton } from "../../buttons";
+import { Card as StyledCard } from "./Card.styles";
 
 interface Props {
   task: Task;
@@ -28,15 +30,15 @@ const Card: React.FC<Props> = ({ task }) => {
   };
 
   return (
-    <div ref={ref}>
+    <StyledCard ref={ref}>
       <h4>{task.title}</h4>
-      <button onClick={handleMoveBack} disabled={isFirstColumn}>
+      <MoveBackButton onClick={handleMoveBack} disabled={isFirstColumn}>
         Move back
-      </button>
-      <button onClick={handleMoveForward} disabled={isLastColumn}>
+      </MoveBackButton>
+      <MoveForwardButton onClick={handleMoveForward} disabled={isLastColumn}>
         Move forward
-      </button>
-    </div>
+      </MoveForwardButton>
+    </StyledCard>
   );
 };
 

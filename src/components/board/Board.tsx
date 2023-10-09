@@ -1,7 +1,7 @@
 import React from "react";
-import { useBoardStore } from "../store/board.store";
-import Column from "./Column";
-import TaskForm from "./TaskForm";
+import { useBoardStore } from "../../store/board.store";
+import Column from "./column/Column";
+import TaskForm from "./task-form/TaskForm";
 
 const Board: React.FC = () => {
   const updateTaskStatus = useBoardStore((state) => state.updateTaskStatus);
